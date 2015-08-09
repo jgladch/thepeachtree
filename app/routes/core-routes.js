@@ -1,15 +1,20 @@
-var React = require('react/addons'),
-ReactApp = React.createFactory(require('../components/ReactApp'));
+var React = require('react/addons');
+var Index = React.createFactory(require('../components/index.jsx'));
+// var ReactApp = require('../components/ReactApp');
 
-module.exports = function(app) {
+module.exports = function (app) {
 
-	app.get('/', function(req, res){
-		// React.renderToString takes your component
-	    // and generates the markup
-		var reactHtml = React.renderToString(ReactApp({}));
-	    // Output html rendered by react
-		// console.log(myAppHtml);
-	    res.render('index.ejs', {reactOutput: reactHtml});
-	});
+	app.get('/', function (req, res) {
+    var data = {
+      data: [1, 2, 3, 4, 5, 6, 7]
+    };
 
+    var exposedData = JSON.stringify(data);
+
+    var reactHtml = React.renderToString(Index(data));
+    res.render('index', {
+      reactOutput: reactHtml,
+      data: exposedData
+    });
+  });
 };
