@@ -5,6 +5,7 @@
     "body-parser": "~1.0.0",
     "browserify": "^11.0.1",
     "cookie-parser": "~1.0.0",
+    "ejs": "^2.3.3",
     "express": "^4.12",
     "griddle-react": "^0.1.19",
     "gulp-notify": "^2.2.0",
