@@ -54,16 +54,23 @@ gulp.task('watch', function () {
   gulp.watch('app/main.js', ['scripts:develop']);
 });
 
-gulp.task('start', function () {
+gulp.task('start:development', function () {
   nodemon({
     script: 'server.js',
     ext: 'js html jsx',
     env: { 'NODE_ENV': 'development' }
   })
-})
+});
+
+gulp.task('start:production', function () {
+  nodemon({
+    script: 'server.js',
+    ext: 'js html jsx',
+  })
+});
 
 gulp.task('default', ['scripts:production', 'styles']);
-gulp.task('develop', ['scripts:develop', 'styles', 'watch', 'start']);
-gulp.task('prod', ['scripts:production', 'styles']);
+gulp.task('develop', ['scripts:develop', 'styles', 'watch', 'start:development']);
+gulp.task('production', ['scripts:production', 'styles', 'start:production']);
 
 gulp.task('heroku:production', ['scripts:production', 'styles']);
