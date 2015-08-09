@@ -1,8 +1,11 @@
-    /** @jsx React.DOM */
+/** @jsx React.DOM */
 
 var React = require('react/addons');
-var ReactApp = require('./components/ReactApp');
-
+var Index = require('./components/index.jsx');
+var _ = require('lodash');
 var mountNode = document.getElementById("react-main-mount");
 
-React.render(new ReactApp({}), mountNode);
+var data = window.data;
+
+React.render(<Index data={data.data} />, mountNode);
+

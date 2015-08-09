@@ -6,7 +6,7 @@ var port = process.env.PORT || 3000;
 var bodyParser = require('body-parser');
 
 // Make sure to include the JSX transpiler
-require("node-jsx").install();
+require('node-jsx').install();
 
 // Include static assets. Not advised for production
 app.use(express.static(path.join(__dirname, 'public')));
@@ -22,9 +22,9 @@ require('./app/routes/core-routes.js')(app);
 
 //Route not found -- Set 404
 app.get('*', function(req, res) {
-    res.json({
-        "route": "Sorry this page does not exist!"
-    });
+  res.json({
+    "route": "Sorry this page does not exist!"
+  });
 });
 
 app.listen(port);
